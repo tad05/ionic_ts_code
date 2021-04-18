@@ -2,24 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss']
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class SignupPage implements OnInit {
+export class RegisterPage implements OnInit {
 
   users: any[] = []
 
-  constructor(private storage: Storage) {
-
-  }
+  constructor(private storage: Storage) { }
 
   async ngOnInit() {
     // if using a custom driver:
     //await this.storage.defineDriver(MyCustomDriver)
     await this.storage.create();
   }
-
   async addUser(name: string, phone: number) {
     this.storage.set(name, phone).then(() => {
       let user = {

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>회원가입</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form action="">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="stacked"><b>ID</b></ion-label>
+        <ion-input type="text" placeholder="Enter ID" #id></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label position="stacked"><b>PassWord</b></ion-label>
+        <ion-input type="password" placeholder="Enter password" #pw></ion-input>
+      </ion-item>
+
+      <br>
+      <ion-item>
+        <ion-label position="stacked"><b>Name</b></ion-label>
+        <ion-input type="text" placeholder="Enter name" #name></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label position="stacked"><b>Phon number</b></ion-label>
+        <ion-input type="number" placeholder="01012345678" #phon></ion-input>
+      </ion-item>
+
+      <br>
+      <!--******localstorage***** -->
+      <ion-button color="primary" expand="full" shape="round" (click)="addUser(name.value,phon)">Sign Up</ion-button>
+
+      <!--
+        name.value phon.value
+        <ion-button type="submit" (click)="signUp(name, phon)" color="danger" expand="block">Sign Up</ion-button>
+      -->
+    </ion-list>
+  </form>
+</ion-content>

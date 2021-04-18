@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Delivery App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <img src="../../assets/delivery.png" alt="">
+    <ion-card-content>
+      Welcome to delivery app!
+      <br>
+      <ion-list>
+        <ion-item>
+          <ion-label position="fixed">ID</ion-label>
+          <ion-input type="text" #id></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="fixed">Password</ion-label>
+          <ion-input type="password" placehoder="Enter Password" #pw></ion-input>
+        </ion-item>
+      </ion-list>
+      <br>
+      <ion-button color="warning" expand="full" shape="round">Login</ion-button>
+      <br>
+      처음 방문하셨나요?
+      <ion-button [routerLink]="['/signup']">회원가입</ion-button>
+    </ion-card-content>
+    <ion-button name="add-circle-outline" [routerLink]="['/qr']">
+      QR Generator
+    </ion-button>
+  </ion-card>
+</ion-content>

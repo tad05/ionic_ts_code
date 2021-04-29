@@ -1,43 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>회원가입</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <form action="">
+<ion-content class="ion-padding">
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
 
-    <ion-list>
+    <ion-item>
+      <ion-label position="floating" color="primary">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked"><b>ID</b></ion-label>
-        <ion-input type="text" placeholder="Enter ID" #id></ion-input>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label position="stacked"><b>PassWord</b></ion-label>
-        <ion-input type="password" placeholder="Enter password" #pw></ion-input>
-      </ion-item>
-
-      <br>
-      <ion-item>
-        <ion-label position="stacked"><b>Name</b></ion-label>
-        <ion-input type="text" placeholder="Enter name" #name></ion-input>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label position="stacked"><b>Phon number</b></ion-label>
-        <ion-input type="number" placeholder="01012345678" #phon></ion-input>
-      </ion-item>
-
-      <br>
-      <!--******localstorage***** -->
-      <ion-button color="primary" expand="full" shape="round" (click)="addUser(name.value,phon)">Sign Up</ion-button>
-
-      <!--
-        name.value phon.value
-        <ion-button type="submit" (click)="signUp(name, phon)" color="danger" expand="block">Sign Up</ion-button>
-      -->
-    </ion-list>
+    <ion-item>
+      <ion-label position="floating" color="primary">Password</ion-label>
+      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+    </ion-item>
+    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Register</ion-button>
+    <br>
+    <label class="error-message">{{errorMessage}}</label>
+    <label class="success-message">{{successMessage}}</label>
   </form>
+  <p class="go-to-login">이미 계정이 있으신가요? <a (click)="goLoginPage()">로그인해보세요.</a></p>
 </ion-content>

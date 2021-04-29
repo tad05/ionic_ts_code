@@ -4,8 +4,6 @@
 
 export const environment = {
   production: false,
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   firebaseConfig: {
     apiKey: "AIzaSyBb0W9bLLmynkzbrusLgiI4abNfM3kZ3Qk",
     authDomain: "capstone-delivery.firebaseapp.com",

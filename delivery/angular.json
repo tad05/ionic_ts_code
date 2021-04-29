@@ -113,12 +113,14 @@
           }
         },
         "lint": {
-          "builder": "@angular-eslint/builder:lint",
+          "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -164,7 +166,7 @@
     }
   },
   "cli": {
-    "analytics": "f4772446-4817-4312-ace0-62f01a708124",
+    "analytics": "d9e7284a-114a-4c00-a4e0-936b00dd7a9b",
     "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {

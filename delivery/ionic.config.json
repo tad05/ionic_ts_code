@@ -1,7 +1,5 @@
 {
-  "name": "delivery",
-  "integrations": {
-    "capacitor": {}
-  },
+  "name": "app",
+  "integrations": {},
   "type": "angular"
 }

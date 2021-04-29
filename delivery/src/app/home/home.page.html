@@ -1,35 +1,83 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Delivery App
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu side="end" content-id="main-content">
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>Inbox</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Outbox</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="heart" slot="start"></ion-icon>
+        <ion-label>Favorites</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="archive" slot="start"></ion-icon>
+        <ion-label>Archived</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="trash" slot="start"></ion-icon>
+        <ion-label>Trash</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="warning" slot="start"></ion-icon>
+        <ion-label>Spam</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-<ion-content [fullscreen]="true">
-  <ion-card>
-    <img src="../../assets/delivery.png" alt="">
-    <ion-card-content>
-      Welcome to delivery app!
-      <br>
-      <ion-list>
-        <ion-item>
-          <ion-label position="fixed">ID</ion-label>
-          <ion-input type="text" #id></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="fixed">Password</ion-label>
-          <ion-input type="password" placehoder="Enter Password" #pw></ion-input>
-        </ion-item>
-      </ion-list>
-      <br>
-      <ion-button color="warning" expand="full" shape="round">Login</ion-button>
-      <br>
-      처음 방문하셨나요?
-      <ion-button [routerLink]="['/register']">회원가입</ion-button>
-    </ion-card-content>
-    <ion-button name="add-circle-outline" [routerLink]="['/qr']">
-      QR Generator
-    </ion-button>
-  </ion-card>
-</ion-content>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Delivery App</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-content [fullscreen]="true">
+      <img src="../../assets/delivery.png" alt="" />
+      <h3><b>Welcome to delivery app!</b></h3>
+      <ion-card>
+        <ion-card-content>
+
+          <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">Email</ion-label>
+                <ion-input formControlName="email" type="text"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input formControlName="password" type="password" placehoder="Enter Password"></ion-input>
+              </ion-item>
+            </ion-list>
+            <br />
+            <ion-button class="submit-btn" type="submit" color="warning" expand="full" shape="round"
+              [disabled]="!validations_form.value">Login</ion-button>
+
+            <label class="erro-message">{{errorMessage}}</label>
+          </form>
+          <br />
+          처음 방문하셨나요?
+          <p class="go-to-register">
+            <a (click)="goToRegisterPage()">회원가입</a>
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+
+    <!--
+      <ion-button expand="block" onclick="openMenu()">Open Menu</ion-button>
+    -->
+  </ion-content>
+</div>

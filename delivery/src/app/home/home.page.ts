@@ -65,7 +65,7 @@ export class HomePage implements OnInit {
       .then(res => {
         console.log(res);
         this.errorMessage = "";
-        this.navCtrl.navigateForward('/courier/tab1');
+        this.navCtrl.navigateForward('/dashboard');
       }, err => {
         this.errorMessage = err.message;
       })

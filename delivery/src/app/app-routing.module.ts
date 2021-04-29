@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'dhome',
     loadChildren: () => import('./dhome/dhome.module').then(m => m.DHomePageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   }
 ];
 

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "capstone-delivery": {
+      "hosting": {
+        "app": [
+          "capstone-delivery"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "capstone-delivery"
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid #bcbcbc;
+      }
+    </style>
+  </head>
+  <body>
+    <p>list works!</p>
+    <!-- <li *ngFor="let p of orders | async">
+{{p.qmWDJN5q0ziQbLqcJiTG}}
+</li>> -->
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>이름</th>
+            <th>주문목록</th>
+            <th>운송장</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of orders | async">
+            <td></td>
+            <td></td>
+            <td>
+              원피스 : {{ p.qmWDJN5q0ziQbLqcJiTG }} <br />
+              코트 : {{ p.qyqaF9QJvqyuesIs94Ge }} <br />
+              자켓 : {{ p.hHXB7BxHsSEMn6Qk0vjN }}
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

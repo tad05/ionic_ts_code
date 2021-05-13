@@ -2,7 +2,7 @@
   "targets": {
     "capstone-delivery": {
       "hosting": {
-        "app": [
+        "delivery": [
           "capstone-delivery"
         ]
       }

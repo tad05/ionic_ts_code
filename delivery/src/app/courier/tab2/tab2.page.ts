@@ -1,16 +1,23 @@
+
 import { Component, OnInit } from '@angular/core';
+//import { title } from 'node:process';
 declare var kakao;
+
+
 
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
   styleUrls: ['./tab2.page.scss']
 })
+
+
+
 export class Tab2Page implements OnInit {
   map: any;
   marker: any;
-
   // 마커들
+
   places = [
     {
       title: '카카오',
@@ -30,9 +37,11 @@ export class Tab2Page implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
+
+
     // 살짝 딜레이 줘야 화면에 맵에 쪽바로 그려진다.
     setTimeout(() => {
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div

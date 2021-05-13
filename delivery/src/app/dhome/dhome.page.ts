@@ -15,7 +15,7 @@ export class DhomePage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private authService: AuthenticationService,
+    public authService: AuthenticationService,
     private formBuilder: FormBuilder
   ) { }
 

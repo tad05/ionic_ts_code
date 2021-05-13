@@ -22,7 +22,7 @@ shopadmin4 : 쇼핑몰 관리자
 
 hosting
 ---
-markup 명령어 : https://heropy.blog/2017/09/30/markdown/
-delivery-customer : https://capstone-customer-b4e47.firebaseapp.com/ 
-* delivery-customer 은 호스팅 설정은 했는데 화면이 아직 안나옴,,
-delivery : https://capstone-delivery.firebaseapp.com/ 
+markup 명령어 : https://heropy.blog/2017/09/30/markdown/<br>
+delivery-customer : https://capstone-customer-b4e47.firebaseapp.com/ <br>
+-> delivery-customer 은 호스팅 설정은 했는데 화면이 아직 안나옴,,<br>
+delivery : https://capstone-delivery.firebaseapp.com/ <br>

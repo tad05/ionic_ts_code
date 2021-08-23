@@ -7,9 +7,10 @@ import { IonicModule } from '@ionic/angular';
 import { MapsPageRoutingModule } from './maps-routing.module';
 
 import { MapsPage } from './maps.page';
+import { CourierAppComponent } from '../courier-app/courier-app.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, MapsPageRoutingModule],
-  declarations: [MapsPage]
+  declarations: [MapsPage, CourierAppComponent]
 })
 export class MapsPageModule {}

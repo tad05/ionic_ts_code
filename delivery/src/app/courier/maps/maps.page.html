@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>다음맵</ion-title>
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <div>
+    <ion-input [(ngModel)]="findID" placeholder="식별번호 입력"></ion-input>
+    <ion-button expand="block" (click)="move()">검색</ion-button>
+  </div>
   <div id="map" class="map"></div>
 </ion-content>

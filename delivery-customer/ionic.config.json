@@ -1,5 +1,7 @@
 {
-  "name": "delivery-customer",
-  "integrations": {},
+  "name": "ccshop",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

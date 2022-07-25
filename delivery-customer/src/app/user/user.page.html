@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>AJuSeYoo Shop</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img class="box1" src="../../assets/delivery.jpg" alt="">
+    <div class="card-title">주문자 정보입력</div>
+    <div class="card-subtitle">배송 정보를 입력해주세요</div>
+  </ion-card>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">이름</ion-label>
+        <ion-input required type="text" [(ngModel)]="aname" name="aname"></ion-input>
+      </ion-item>
+      <!-- <ion-item>
+        <ion-label position="floating">주소</ion-label>
+        <ion-input required type="text" formControlName="aaddress" [(ngModel)]="aaddress" name="aaddress" (click)="openDaumPopup()"></ion-input>
+      </ion-item> -->
+      <form [formGroup]="frm">
+        <ion-item>
+          <ion-label position="floating">배송주소</ion-label>
+          <ion-input name="aaddress" formControlName="aaddress" (click)="openDaumPopup()" [(ngModel)]="aaddress"></ion-input>
+        </ion-item>
+    
+      </form>
+      <ion-item>
+        <ion-label position="floating">상세주소</ion-label>
+        <ion-input required type="text" [(ngModel)]="daaddress" name="daaddress"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">전화번호</ion-label>
+        <ion-input required type="text" [(ngModel)]="aphone" name="aphone"></ion-input>
+      </ion-item>
+    </ion-list>
+    <!-- <ion-button (click)="CreateUser()">주문자 정보 저장</ion-button> -->
+  </form>
+
+</ion-content>
+<div #daum_popup style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+  <img (click)="closeDaumPopup()" src="//t1.daumcdn.net/postcode/resource/images/close.png"
+    style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" />
+</div>
+<ion-footer>
+  <ion-toolbar color="success">
+    <ion-button expand="full" (click)="CreateUser()" fill="clear" color="light">
+      다음
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

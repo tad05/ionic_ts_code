@@ -1,7 +1,54 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>택배기사 HOME</ion-title>
+    <ion-title>HOME</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content class="main">
+  <ion-toolbar>
+    <ion-segment
+      (ionChange)="segmentChanged($event)"
+      value="all"
+      [(ngModel)]="list"
+    >
+      <!--수정/ ngModel을 쓰면 value->버튼 고정 안됨.-->
+      <ion-segment-button value="all">
+        <ion-label>전체</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="complete">
+        <ion-label>배송완료</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="list" *ngIf="items?.length > 0; else noItems">
+    <ul class="collection">
+      <li
+        class="collection-item"
+        *ngFor="let item of items; let i = index"
+        [class.active]="i == currentIndex"
+        id="i"
+      >
+        <ion-card *ngSwitchCase="'all'" class="collection-item-text">
+          <!--(click)="show()"-->
+          <ion-card-title>
+            <!-- {{i}} -->
+            {{ item.name }}
+          </ion-card-title>
+          <ion-card-content>
+            {{ item.address }} <br />
+            {{ item.phone }}
+          </ion-card-content>
+          <ion-button [hidden]="!showButton" *ngIf="showButton"
+            >hidden button</ion-button
+          >
+        </ion-card>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noItems>
+    <hr />
+    <h5>There are no items to list</h5>
+  </ng-template>
+</ion-content>

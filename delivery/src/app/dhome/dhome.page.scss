@@ -1,4 +1,32 @@
 .first-message {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+  text-align: center;
+  font-size: 30px;
+  font-size: auto;
+  padding: 50px;
+  padding-top: 130px;
+  //font-family: Hans !important;
+  font-family: Right !important;
+}
+.image {
+  text-align: center;
+  padding: 50px;
+}
+form {
+  padding-top: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 50px;
+
+  ion-list {
+    block-size: 180px;
+    border-radius: 30px;
+
+    ion-item {
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
+  }
 }

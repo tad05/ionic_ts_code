@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyBb0W9bLLmynkzbrusLgiI4abNfM3kZ3Qk",
-    authDomain: "capstone-delivery.firebaseapp.com",
-    projectId: "capstone-delivery",
-    storageBucket: "capstone-delivery.appspot.com",
-    messagingSenderId: "414017169816",
-    appId: "1:414017169816:web:097674e145ba58a43f63ed",
-    measurementId: "G-B4CYQHXY7R"
+    apiKey: 'AIzaSyAq2eVOr3dwKz72_Kk_ZZvFDa2XCu_E-n0',
+    authDomain: 'capstone2-178ba.firebaseapp.com',
+    databaseURL: 'https://capstone2-178ba-default-rtdb.firebaseio.com',
+    projectId: 'capstone2-178ba',
+    storageBucket: 'capstone2-178ba.appspot.com',
+    messagingSenderId: '293215382441',
+    appId: '1:293215382441:web:877e22a7630dfff8d1b2b8',
+    measurementId: 'G-Z8TNMQZ893'
   }
 };
 

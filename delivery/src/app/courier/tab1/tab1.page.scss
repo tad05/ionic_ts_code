@@ -1,0 +1,16 @@
+ul {
+  list-style: none;
+  padding-left: 0%;
+}
+ion-card-title {
+  padding-left: 20px;
+}
+ion-segment {
+  margin-top: 30px;
+}
+ion-toolbar {
+  ion-segment-button {
+    height: 20px;
+    width: 150px;
+  }
+}

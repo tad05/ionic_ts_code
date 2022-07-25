@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>주문확인</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let p of products">
+      <p slot="start">
+        {{p.count}}x
+      </p>
+      <ion-label>
+        {{p.title}}
+      </ion-label>
+
+      <ion-avatar slot="end">
+        <ion-img [src]="p.image"></ion-img>
+      </ion-avatar>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-card>
+  <ion-grid class="ion-text-center">
+
+    <ion-row class="ion-margin">
+      <ion-col>
+        <ion-title>
+          <ion-text color="default">
+            배송지 확인
+          </ion-text>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="header-row">
+      <ion-col>
+        <ion-text>이름</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>주소</ion-text>
+      </ion-col>
+
+      <ion-col>
+        <ion-text>전화번호</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-list>
+      <ion-item *ngFor="let p of carts">
+        <ion-row class="header-row">
+          <ion-col>
+            <ion-text>
+              이름
+            </ion-text>
+          </ion-col>
+
+          <ion-col>
+            <ion-text>
+              {{p.Address}}
+            </ion-text>
+          </ion-col>
+
+          <ion-col>
+            <ion-text>
+              {{p.PhoneNumber}}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+
+  </ion-grid>
+
+</ion-card>
+<ion-footer>
+  <ion-toolbar color="success">
+    <ion-button expand="full" (click)="checkout()" fill="clear" color="light">
+      주문하기
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

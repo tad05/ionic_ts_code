@@ -1,6 +1,48 @@
 .map {
-  width: 100vw;
-  height: 80vh;
+  width: 100%;
+  height: 70vh;
   border: 1px solid #b8b8b8;
   background-size: cover;
+}
+.l_box {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  border-radius: 5px;
+  border-bottom: 2px solid #fff;
+  border-right: 1px solid #fff;
+  overflow: hidden;
+  background: #fff;
+}
+.s_box {
+  position: relative;
+  margin: 3px 10px 0 3px;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #888;
+  width: 17px;
+  height: 17px;
+  background: url("../../../assets/icon/overlay_close.png");
+}
+.c_ul {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.li_add {
+  position: relative;
+  background: #2b2d36;
+  margin-bottom: 2px;
+  margin-right: 3px;
+  line-height: 1;
+  padding: 5px 10px;
+  list-style: none;
+}
+.c_span {
+  display: inline-block;
 }

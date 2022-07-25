@@ -1,25 +1,33 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Register</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>회원가입</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content class="ion-padding">
-  <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value)">
-
-    <ion-item>
-      <ion-label position="floating" color="primary">Email</ion-label>
-      <ion-input type="text" formControlName="email"></ion-input>
-    </ion-item>
+<ion-content>
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="registerUser(validations_form.value)">
 
     <ion-item>
-      <ion-label position="floating" color="primary">Password</ion-label>
-      <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+      <ion-input type="text" formControlName="name" placeholder="이름">
+      </ion-input>
     </ion-item>
-    <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Register</ion-button>
-    <br>
-    <label class="error-message">{{errorMessage}}</label>
-    <label class="success-message">{{successMessage}}</label>
+    <!-- <div>
+      <ng-container *ngFor="let validation of validationMessages.name"></ng-container>
+    </div> -->
+    <ion-item>
+      <ion-input type="number" formControlName="phone" placeholder="전화번호">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" formControlName="email" placeholder="이메일">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" formControlName="password" placeholder="비밀번호">
+      </ion-input>
+    </ion-item>
+
+    <ion-button class="submit-btn" class="btn-primary" [disabled]="!validations_form.valid" type="submit">회원가입
+    </ion-button>
+
   </form>
-  <p class="go-to-login">이미 계정이 있으신가요? <a (click)="goLoginPage()">로그인해보세요.</a></p>
 </ion-content>

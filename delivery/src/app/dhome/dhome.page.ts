@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -53,8 +53,8 @@ export class DhomePage implements OnInit {
         this.errorMessage = err.message;
       })
   }
+
   goToRegisterPage() {
     this.navCtrl.navigateForward('/register');
   }
-
 }

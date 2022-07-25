@@ -1,47 +1,51 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>택배기사</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content class="ion-padding">
-  <ion-content [fullscreen]="true">
-    <img src="../../assets/택배기사.PNG" alt="" />
-    <div class="first-message">
-      <h3><b>Welcome to delivery worker<br>
-          Have a nice day!</b></h3>
-    </div>
-    <ion-card>
-      <ion-card-content>
+<ion-content [fullscreen]="true" color="light">
+  <!-- <div class="image">
+    <img src="../../assets/택배기사.PNG">
+  </div> -->
 
-        <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
-          <ion-list>
-            <ion-item>
-              <ion-label position="floating">Email</ion-label>
-              <ion-input formControlName="email" type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              <ion-input formControlName="password" type="password" placehoder="Enter Password"></ion-input>
-            </ion-item>
-          </ion-list>
-          <br />
-          <!--
-          <ion-button class="submit-btn" type="submit" color="warning" expand="full" shape="round"
-            [disabled]="!validations_form.value">Login</ion-button>
-          -->
-          <ion-button class="submit-btn" type="submit" color="warning" expand="full" shape="round"
-            [routerLink]="['/courier/tab1']">Login</ion-button>
-          <label class="erro-message">{{errorMessage}}</label>
-        </form>
-        <br />
-        <!--
-        처음 방문하셨나요?
-        <p class="go-to-register">
-          <a (click)="goToRegisterPage()">회원가입</a>
-        </p>
-        -->
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
+  <div class="first-message">
+    Welcome to delivery worker.
+  </div>
+
+  <form
+    class="form"
+    [formGroup]="validations_form"
+    (ngSubmit)="loginUser(validations_form.value)"
+  >
+    <ion-list>
+      <ion-item>
+        <ion-label position="fixed">Email</ion-label>
+
+        <ion-input formControlName="email" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed">Password</ion-label>
+        <ion-input
+          formControlName="password"
+          type="password"
+          placehoder="Enter Password"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+    <br />
+
+    <ion-button
+      class="submit-btn"
+      type="submit"
+      color="warning"
+      expand="full"
+      shape="round"
+      [routerLink]="['/courier/tab1']"
+    >
+      Login</ion-button
+    >
+    <label class="erro-message">{{ errorMessage }}</label>
+  </form>
+  <br />
 </ion-content>

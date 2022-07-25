@@ -1,86 +1,73 @@
-<ion-menu side="end" content-id="main-content">
-  <ion-header>
-    <ion-toolbar translucent>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item>
-        <ion-icon name="cube-outline" slot="start"></ion-icon>
-        <ion-button [routerLink]="['/dhome']" fill="clear" color="dark" size="large" expand="full">택배기사</ion-button>
-      </ion-item>
-      <!--
-      <ion-item>
-        <ion-icon name="paper-plane" slot="start"></ion-icon>
-        <ion-label>Outbox</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="heart" slot="start"></ion-icon>
-        <ion-label>Favorites</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="archive" slot="start"></ion-icon>
-        <ion-label>Archived</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="trash" slot="start"></ion-icon>
-        <ion-label>Trash</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="warning" slot="start"></ion-icon>
-        <ion-label>Spam</ion-label>
-      </ion-item>
-      -->
-    </ion-list>
-  </ion-content>
-</ion-menu>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <!-- <ion-title>
+      <ion-icon name="cart"></ion-icon>
+      AJuSeYoo Shop
+    </ion-title> -->
+    <ion-buttons slot="start">
+      <ion-button (click)="home()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-text>Asecond</ion-text>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>주문하기</ion-title>
+  </ion-toolbar>
+</ion-header>
+<link rel="stylesheet" href="./home.page.scss" />
 
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Delivery App</ion-title>
-      <ion-buttons slot="end">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="card-background-page">
+  <ion-card>
+    <img class="box1" src="../../assets/shop.jpg" alt="" />
+    <div class="card-title">Shop</div>
+    <div class="card-subtitle">주문하실 상품을 선택해주세요</div>
+  </ion-card>
+  <!-- </ion-content>
+<ion-content> -->
+  <ion-list>
+    <ion-item
+      *ngFor="let p of products | async"
+      (click)="p.expanded = !p.expanded"
+    >
+      <!-- <ion-thumbnail slot="start">
+        <ion-img [src]="p.img"></ion-img>
+      </ion-thumbnail> -->
 
-  <ion-content class="ion-padding">
-    <ion-content [fullscreen]="true">
-      <img src="../../assets/delivery.png" alt="" />
-      <h3><b>Welcome to delivery app!</b></h3>
-      <ion-card>
-        <ion-card-content>
+      <ion-label class="ion-text-wrap">
+        {{ p.title }}
+        <br />
+        <b>{{ p.price | currency: "USD" }}</b>
 
-          <form class="form" [formGroup]="validations_form" (ngSubmit)="loginUser(validations_form.value)">
-            <ion-list>
-              <ion-item>
-                <ion-label position="floating">Email</ion-label>
-                <ion-input formControlName="email" type="text"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label position="floating">Password</ion-label>
-                <ion-input formControlName="password" type="password" placehoder="Enter Password"></ion-input>
-              </ion-item>
-            </ion-list>
-            <br />
-            <ion-button class="submit-btn" type="submit" color="warning" expand="full" shape="round"
-              [disabled]="!validations_form.value">Login</ion-button>
+        <div [hidden]="!p.expanded">
+          {{ p.description }}
+        </div>
+      </ion-label>
 
-            <label class="erro-message">{{errorMessage}}</label>
-          </form>
-          <br />
-          처음 방문하셨나요?
-          <p class="go-to-register">
-            <a (click)="goToRegisterPage()">회원가입</a>
-          </p>
-        </ion-card-content>
-      </ion-card>
-    </ion-content>
+      <ion-row slot="end" class="ion-no-padding ion-align-items-center">
+        <ion-col size="5">
+          <ion-button (click)="addToCart($event, p)" fill="clear">
+            <ion-icon name="add" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
 
-    <!--
-      <ion-button expand="block" onclick="openMenu()">Open Menu</ion-button>
-    -->
-  </ion-content>
-</div>
+        <ion-col size="2">
+          {{ cart[p.id] || 0 }}
+        </ion-col>
+
+        <ion-col size="4">
+          <ion-button (click)="removeFromCart($event, p)" fill="clear">
+            <ion-icon name="remove" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+
+  <ion-footer>
+    <ion-card> </ion-card>
+  </ion-footer>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCart()" color="secondary" #myfab>
+      <ion-icon name="bag-handle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

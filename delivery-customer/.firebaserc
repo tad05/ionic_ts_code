@@ -1,5 +1,14 @@
 {
+  "targets": {
+    "capstone2-178ba": {
+      "hosting": {
+        "app": [
+          "capstone2-178ba"
+        ]
+      }
+    }
+  },
   "projects": {
-    "default": "capstone-customer-b4e47"
+    "default": "capstone2-178ba"
   }
 }

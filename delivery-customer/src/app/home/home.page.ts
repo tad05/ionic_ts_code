@@ -1,77 +1,82 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
-
-
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Animation, AnimationController, ModalController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { CartPage } from '../cart/cart.page';
+import { UserPage } from '../user/user.page';
+import { ProductService } from '../services/product.service';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss']
+  styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
-  validations_form: FormGroup;
-  errorMessage: string = '';
+  products: Observable<any[]>;
+  @ViewChild('myfab', { read: ElementRef }) cartBtn: ElementRef;
+  cartAnimation: Animation;
+  cart = {};
+  name: string;
+  address: string;
+  phone: number;
+  cartKey: ProductService["cartKey"];
+  constructor(private afs: AngularFirestore, private navCtrl: NavController, private ProductService: ProductService, private animationCtrl: AnimationController, private modalCtrl: ModalController) { }
 
-  constructor(
-    private navCtrl: NavController,
-    private authService: AuthenticationService,
-    private formBuilder: FormBuilder,
-    //
-    private menu: MenuController
-  ) { }
 
-  //
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
 
   ngOnInit() {
-    this.validations_form = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$') //emial 인증 패턴
-      ])),
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(4),
-        Validators.required
-      ])),
+    this.products = this.ProductService.getProducts();
+
+    this.ProductService.cart.subscribe(value => {
+      console.log('MY CART NOW: ', value);
+      this.cart = value;
     })
   }
-  validation_messages = {
-    'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' }
-    ],
-    'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
-    ]
-  };
-
-  loginUser(value) {
-    this.authService.loginUser(value)
-      .then(res => {
-        console.log(res);
-        this.errorMessage = "";
-        this.navCtrl.navigateForward('/dashboard');
-      }, err => {
-        this.errorMessage = err.message;
-      })
+  home() {
+    this.navCtrl.navigateForward('/main');
   }
-  goToRegisterPage() {
-    this.navCtrl.navigateForward('/register');
+  ngAfterViewInit() {
+    this.cartAnimation = this.animationCtrl.create('cart-animation');
+    this.cartAnimation
+      .addElement(this.cartBtn.nativeElement)
+      .keyframes([
+        { offset: 0, transform: 'scale(1)' },
+        { offset: 0.5, transform: 'scale(1.2)' },
+        { offset: 0.8, transform: 'scale(0.9)' },
+        { offset: 1, transform: 'scale(1)' },
+      ])
+      .duration(300)
+      .easing('ease-out')
+  }
+
+  addUser() {
+    this.ProductService.addUser();
+    // this.afs.collection('carts').doc(this.cartKey).update({
+    //   이름 : this.name,
+    //   주소 : this.address
+
+
+    // });
+  }
+  addToCart(event, product) {
+    event.stopPropagation();
+    this.ProductService.addToCart(product.id);
+    this.cartAnimation.play();
+  }
+
+  removeFromCart(event, product) {
+    event.stopPropagation();
+    this.ProductService.removeFromCart(product.id);
+    this.cartAnimation.play();
+  }
+
+  async openCart() {
+    // const modal=await this.modalCtrl.create({
+    //   component : UserPage
+    // });
+    // await modal.present();
+    this.navCtrl.navigateForward('user');
   }
 
 }

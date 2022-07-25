@@ -14,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'dhome',
-    loadChildren: () => import('./dhome/dhome.module').then(m => m.DHomePageModule)
+    loadChildren: () =>
+      import('./dhome/dhome.module').then(m => m.DHomePageModule)
   }
 ];
 
@@ -24,4 +25,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
